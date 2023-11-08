@@ -91,6 +91,8 @@ namespace NUnit.Analyzers.Constants
         internal const string StringAssertUsage = "NUnit2048";
         internal const string CollectionAssertUsage = "NUnit2049";
         internal const string UpdateStringFormatToInterpolatableString = "NUnit2050";
+        internal const string DictionaryContainsKeyActualIsNotDictionary = "NUnit2051";
+        internal const string DictionaryContainsKeyIncompatibleTypes = "NUnit2052";
 
         #endregion Assertion
 

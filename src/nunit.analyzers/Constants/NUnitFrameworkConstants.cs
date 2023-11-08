@@ -32,10 +32,12 @@ namespace NUnit.Analyzers.Constants
 
         public const string NameOfContains = "Contains";
         public const string NameOfContainsItem = "Item";
+        public const string NameOfContainsKey = "Key";
 
         public const string NameOfDoes = "Does";
         public const string NameOfDoesNot = "Not";
         public const string NameOfDoesContain = "Contain";
+        public const string NameOfDoesContainKey = "ContainKey";
         public const string NameOfDoesStartWith = "StartWith";
         public const string NameOfDoesEndWith = "EndWith";
         public const string NameOfDoesMatch = "Match";
@@ -166,6 +168,7 @@ namespace NUnit.Analyzers.Constants
         public const string FullNameOfDelayedConstraint = "NUnit.Framework.Constraints.DelayedConstraint";
         public const string FullNameOfTestDelegate = "NUnit.Framework.TestDelegate";
         public const string FullNameOfThrows = "NUnit.Framework.Throws";
+        public const string FullNameOfDictionaryContainsKeyConstraint = "NUnit.Framework.Constraints.DictionaryContainsKeyConstraint";
 
         public const string NameOfTestCaseAttribute = "TestCaseAttribute";
         public const string NameOfTestCaseSourceAttribute = "TestCaseSourceAttribute";

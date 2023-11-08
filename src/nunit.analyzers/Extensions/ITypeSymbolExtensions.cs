@@ -210,6 +210,62 @@ namespace NUnit.Analyzers.Extensions
         }
 
         /// <summary>
+        /// Return value indicates whether type implements <see cref="IReadOnlyDictionary{TKey,TValue}"/> interface.
+        /// </summary>
+        internal static bool IsIReadOnlyDictionary(this ITypeSymbol @this,
+                                                   [NotNullWhen(true)] out ITypeSymbol? keyType,
+                                                   [NotNullWhen(true)] out ITypeSymbol? valueType)
+        {
+            var allInterfaces = @this.AllInterfaces;
+
+            if (@this is INamedTypeSymbol namedType && namedType.TypeKind == TypeKind.Interface)
+            {
+                allInterfaces = allInterfaces.Add(namedType);
+            }
+
+            var genericIEnumerableInterface = allInterfaces.FirstOrDefault(i => i.GetFullMetadataName() == "System.Collections.Generic.IReadOnlyDictionary`1");
+
+            if (genericIEnumerableInterface is null)
+            {
+                keyType = null;
+                valueType = null;
+                return false;
+            }
+
+            keyType = genericIEnumerableInterface.TypeArguments[0];
+            valueType = genericIEnumerableInterface.TypeArguments[1];
+            return true;
+        }
+
+        /// <summary>
+        /// Return value indicates whether type implements <see cref="IDictionary{TKey,TValue}"/> interface.
+        /// </summary>
+        internal static bool IsIDictionary(this ITypeSymbol @this,
+                                           [NotNullWhen(true)] out ITypeSymbol? keyType,
+                                           [NotNullWhen(true)] out ITypeSymbol? valueType)
+        {
+            var allInterfaces = @this.AllInterfaces;
+
+            if (@this is INamedTypeSymbol namedType && namedType.TypeKind == TypeKind.Interface)
+            {
+                allInterfaces = allInterfaces.Add(namedType);
+            }
+
+            var genericIEnumerableInterface = allInterfaces.FirstOrDefault(i => i.GetFullMetadataName() == "System.Collections.Generic.IDictionary`1");
+
+            if (genericIEnumerableInterface is null)
+            {
+                keyType = null;
+                valueType = null;
+                return false;
+            }
+
+            keyType = genericIEnumerableInterface.TypeArguments[0];
+            valueType = genericIEnumerableInterface.TypeArguments[1];
+            return true;
+        }
+
+        /// <summary>
         /// Return value indicates whether type implements IDisposable.
         /// </summary>
         internal static bool IsDisposable(this ITypeSymbol @this)
